@@ -29,7 +29,8 @@ public class Tests
         yield return new TestCaseData("000101", new [] {3, 1, 1, 1}, false, 1);
         yield return new TestCaseData("00110100", new [] {2, 2, 1, 1, 2}, false, 3);
         yield return new TestCaseData("010111", new [] {1, 1, 1, 3}, false, 1);
-        yield return new TestCaseData("110111", new [] {2, 1, 3}, false, 1); /
+        yield return new TestCaseData("110111", new [] {2, 1, 3}, false, 1);
         yield return new TestCaseData("110110", new [] {2, 1, 2, 1}, false, 2);
+        yield return new TestCaseData("111000", new [] {3, 3}, true, 0);
     }
 }
