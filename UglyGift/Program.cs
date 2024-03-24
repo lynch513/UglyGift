@@ -36,11 +36,11 @@ namespace UglyGift {
         public static void Main(string[] args)
         {
             var assemblyDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            var bigPrettyString = File.ReadAllText(Path.Combine(assemblyDirectory, "TestData", "tenthousandPrettyLine.txt"));
-
             var stopWatch = new Stopwatch();
+
+            var tenThousandsPrettyString = File.ReadAllText(Path.Combine(assemblyDirectory, "TestData", "tenthousandPrettyLine.txt"));
             stopWatch.Start();
-            var chunks = PrettyStringParser.CountEqualChunks(bigPrettyString).ToList();
+            var chunks = PrettyStringParser.CountEqualChunks(tenThousandsPrettyString).ToList();
             var isPrettyLine = PrettyStringParser.IsPrettyLine(chunks);
             var howManyChanges = PrettyStringParser.HowChangeNeeded(chunks);
             stopWatch.Stop();
@@ -48,15 +48,37 @@ namespace UglyGift {
             Console.WriteLine($"Changes needed: {howManyChanges}");
             Console.WriteLine($"Elapsed milliseconds: {stopWatch.ElapsedMilliseconds}ms");
 
-            var bigUglyString = File.ReadAllText(Path.Combine(assemblyDirectory, "TestData", "tenthousandUglyLine.txt"));
+            var tenThousandsUglyString = File.ReadAllText(Path.Combine(assemblyDirectory, "TestData", "tenthousandUglyLine.txt"));
 
             stopWatch.Restart();
-            var chunks2 = PrettyStringParser.CountEqualChunks(bigUglyString).ToList();
-            isPrettyLine = PrettyStringParser.IsPrettyLine(chunks2);
-            var howManyChanges2 = PrettyStringParser.HowChangeNeeded(chunks2);
+            chunks = PrettyStringParser.CountEqualChunks(tenThousandsUglyString).ToList();
+            isPrettyLine = PrettyStringParser.IsPrettyLine(chunks);
+            howManyChanges = PrettyStringParser.HowChangeNeeded(chunks);
             stopWatch.Stop();
             Console.WriteLine($"Is pretty line: {isPrettyLine}");
-            Console.WriteLine($"Changes needed: {howManyChanges2}");
+            Console.WriteLine($"Changes needed: {howManyChanges}");
+            Console.WriteLine($"Elapsed milliseconds: {stopWatch.ElapsedMilliseconds}ms");
+
+            var bigPrettyString = File.ReadAllText(Path.Combine(assemblyDirectory, "TestData", "bigPrettyLine.txt"));
+
+            stopWatch.Restart();
+            chunks = PrettyStringParser.CountEqualChunks(bigPrettyString).ToList();
+            isPrettyLine = PrettyStringParser.IsPrettyLine(chunks);
+            howManyChanges = PrettyStringParser.HowChangeNeeded(chunks);
+            stopWatch.Stop();
+            Console.WriteLine($"Is pretty line: {isPrettyLine}");
+            Console.WriteLine($"Changes needed: {howManyChanges}");
+            Console.WriteLine($"Elapsed milliseconds: {stopWatch.ElapsedMilliseconds}ms");
+
+            var bigUglyString = File.ReadAllText(Path.Combine(assemblyDirectory, "TestData", "bigUglyLine.txt"));
+
+            stopWatch.Restart();
+            chunks = PrettyStringParser.CountEqualChunks(bigUglyString).ToList();
+            isPrettyLine = PrettyStringParser.IsPrettyLine(chunks);
+            howManyChanges = PrettyStringParser.HowChangeNeeded(chunks);
+            stopWatch.Stop();
+            Console.WriteLine($"Is pretty line: {isPrettyLine}");
+            Console.WriteLine($"Changes needed: {howManyChanges}");
             Console.WriteLine($"Elapsed milliseconds: {stopWatch.ElapsedMilliseconds}ms");
         }
     }
